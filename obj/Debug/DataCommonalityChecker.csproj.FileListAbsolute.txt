@@ -1,0 +1,10 @@
+C:\Users\danda\Desktop\PRJ\UAS\DataCommonalityChecker\bin\Debug\DataCommonalityChecker.exe.config
+C:\Users\danda\Desktop\PRJ\UAS\DataCommonalityChecker\bin\Debug\DataCommonalityChecker.exe
+C:\Users\danda\Desktop\PRJ\UAS\DataCommonalityChecker\bin\Debug\DataCommonalityChecker.pdb
+C:\Users\danda\Desktop\PRJ\UAS\DataCommonalityChecker\obj\Debug\DataCommonalityChecker.csproj.AssemblyReference.cache
+C:\Users\danda\Desktop\PRJ\UAS\DataCommonalityChecker\obj\Debug\DataCommonalityChecker.Form1.resources
+C:\Users\danda\Desktop\PRJ\UAS\DataCommonalityChecker\obj\Debug\DataCommonalityChecker.Properties.Resources.resources
+C:\Users\danda\Desktop\PRJ\UAS\DataCommonalityChecker\obj\Debug\DataCommonalityChecker.csproj.GenerateResource.cache
+C:\Users\danda\Desktop\PRJ\UAS\DataCommonalityChecker\obj\Debug\DataCommonalityChecker.csproj.CoreCompileInputs.cache
+C:\Users\danda\Desktop\PRJ\UAS\DataCommonalityChecker\obj\Debug\DataCommonalityChecker.exe
+C:\Users\danda\Desktop\PRJ\UAS\DataCommonalityChecker\obj\Debug\DataCommonalityChecker.pdb
