@@ -33,12 +33,24 @@
             this.btnCheck = new System.Windows.Forms.Button();
             this.btnReset = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.Data = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TotalDataCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TotalClassesData = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DataCommonality = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
             // 
+            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Data,
+            this.TotalDataCount,
+            this.TotalClassesData,
+            this.DataCommonality});
             this.dataGridView1.Location = new System.Drawing.Point(13, 68);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(775, 370);
@@ -76,6 +88,7 @@
             // 
             // label1
             // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(418, 13);
@@ -83,6 +96,34 @@
             this.label1.Size = new System.Drawing.Size(370, 31);
             this.label1.TabIndex = 4;
             this.label1.Text = "Data Commonality Checker";
+            // 
+            // Data
+            // 
+            this.Data.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Data.HeaderText = "Data";
+            this.Data.Name = "Data";
+            this.Data.ReadOnly = true;
+            // 
+            // TotalDataCount
+            // 
+            this.TotalDataCount.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.TotalDataCount.HeaderText = "Total Data Count";
+            this.TotalDataCount.Name = "TotalDataCount";
+            this.TotalDataCount.ReadOnly = true;
+            // 
+            // TotalClassesData
+            // 
+            this.TotalClassesData.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.TotalClassesData.HeaderText = "Total Class that uses this data";
+            this.TotalClassesData.Name = "TotalClassesData";
+            this.TotalClassesData.ReadOnly = true;
+            // 
+            // DataCommonality
+            // 
+            this.DataCommonality.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.DataCommonality.HeaderText = "Data Commonality";
+            this.DataCommonality.Name = "DataCommonality";
+            this.DataCommonality.ReadOnly = true;
             // 
             // Form1
             // 
@@ -110,6 +151,10 @@
         private System.Windows.Forms.Button btnCheck;
         private System.Windows.Forms.Button btnReset;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Data;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TotalDataCount;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TotalClassesData;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DataCommonality;
     }
 }
 
