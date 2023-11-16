@@ -33,9 +33,9 @@
             this.btnCheck = new System.Windows.Forms.Button();
             this.btnReset = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.Data = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TotalDataCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TotalClassesData = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DataCommonality = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -49,7 +49,6 @@
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Data,
             this.TotalDataCount,
-            this.TotalClassesData,
             this.DataCommonality});
             this.dataGridView1.Location = new System.Drawing.Point(13, 68);
             this.dataGridView1.Name = "dataGridView1";
@@ -91,11 +90,20 @@
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(418, 13);
+            this.label1.Location = new System.Drawing.Point(535, 13);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(370, 31);
+            this.label1.Size = new System.Drawing.Size(253, 31);
             this.label1.TabIndex = 4;
-            this.label1.Text = "Data Commonality Checker";
+            this.label1.Text = "Data Commonality";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(12, 42);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(0, 16);
+            this.label2.TabIndex = 5;
             // 
             // Data
             // 
@@ -107,16 +115,9 @@
             // TotalDataCount
             // 
             this.TotalDataCount.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.TotalDataCount.HeaderText = "Total Data Count";
+            this.TotalDataCount.HeaderText = "Number of Modules using this data element";
             this.TotalDataCount.Name = "TotalDataCount";
             this.TotalDataCount.ReadOnly = true;
-            // 
-            // TotalClassesData
-            // 
-            this.TotalClassesData.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.TotalClassesData.HeaderText = "Total Class that uses this data";
-            this.TotalClassesData.Name = "TotalClassesData";
-            this.TotalClassesData.ReadOnly = true;
             // 
             // DataCommonality
             // 
@@ -130,6 +131,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnReset);
             this.Controls.Add(this.btnCheck);
@@ -151,9 +153,9 @@
         private System.Windows.Forms.Button btnCheck;
         private System.Windows.Forms.Button btnReset;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Data;
         private System.Windows.Forms.DataGridViewTextBoxColumn TotalDataCount;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TotalClassesData;
         private System.Windows.Forms.DataGridViewTextBoxColumn DataCommonality;
     }
 }

@@ -19,7 +19,7 @@ namespace DataCommonalityChecker
     {
         public string sourceCode;
 
-        public void UpdateVariableCount(Dictionary<string, int> varCount, string varName)
+        public void updateVarCount(Dictionary<string, int> varCount, string varName)
         {
             if (!varCount.ContainsKey(varName))
             {
@@ -40,62 +40,81 @@ namespace DataCommonalityChecker
         {
             OpenFileDialog dialog = new OpenFileDialog();
             dialog.Title = "Open Source Code File";
+            dialog.Filter = "C# Source Code Files|*.cs";
 
             if (dialog.ShowDialog() == DialogResult.OK)
             {
                 sourceCode = File.ReadAllText(dialog.FileName);
-                
+
             }
         }
 
         private void btnCheck_Click(object sender, EventArgs e)
         {
             dataGridView1.Rows.Clear();
+            label2.Text = string.Empty;
+            SyntaxTree syntaxTree = CSharpSyntaxTree.ParseText(sourceCode);
+            var root = syntaxTree.GetRoot();
+            Dictionary<string, int> varCount = new Dictionary<string, int>();
+            var fieldDec = root.DescendantNodes().OfType<FieldDeclarationSyntax>();
+            var propertyDec = root.DescendantNodes().OfType<PropertyDeclarationSyntax>();
+            var classDec = root.DescendantNodes().OfType<ClassDeclarationSyntax>();
+            int totalModules = root.DescendantNodes().OfType<ClassDeclarationSyntax>().Count() + root.DescendantNodes().OfType<MethodDeclarationSyntax>().Count();
+
             if (sourceCode == null)
             {
-                dataGridView1.Rows.Add("No File Supplied!", "No File Supplied!", "No File Supplied!", "No File Supplied!");
+                label2.Text = "No File Supplied!";
             }
             else
             {
-                SyntaxTree syntaxTree = CSharpSyntaxTree.ParseText(sourceCode);
-                var root = syntaxTree.GetRoot();
-
-                Dictionary<string, int> varCount = new Dictionary<string, int>();
-
-                var fieldDec = root.DescendantNodes().OfType<FieldDeclarationSyntax>();
                 foreach (var fDec in fieldDec)
                 {
-                    foreach (var variable in fDec.Declaration.Variables)
+                    var varDec = fDec.DescendantNodes().OfType<VariableDeclaratorSyntax>();
+                    foreach (var vDec in varDec)
                     {
-                        string varName = variable.Identifier.Text;
-                        UpdateVariableCount(varCount, varName);
-                    }
-                }
+                        string varName = vDec.Identifier.Text;
 
-                var propertyDec = root.DescendantNodes().OfType<PropertyDeclarationSyntax>();
-                foreach (var pDec in propertyDec)
-                {
-                    string varName = pDec.Identifier.Text;
-                    UpdateVariableCount(varCount, varName);
-                }
-
-                var methodDec = root.DescendantNodes().OfType<MethodDeclarationSyntax>();
-                foreach (var mDec in methodDec)
-                {
-                    var localDec = mDec.DescendantNodes().OfType<VariableDeclarationSyntax>();
-                    foreach (var localVar in localDec)
-                    {
-                        foreach (var variable in localVar.Variables)
+                        if (!varName.StartsWith("_") && char.IsLower(varName[0]) && (varName != "var"))
                         {
-                            string varName = variable.Identifier.Text;
-                            UpdateVariableCount(varCount, varName);
+                            updateVarCount(varCount, varName);
                         }
                     }
                 }
 
-                foreach (var kvp in varCount)
+                foreach (var pDec in propertyDec)
                 {
-                    dataGridView1.Rows.Add(kvp.Key, kvp.Value);
+                    string varName = pDec.Identifier.Text;
+                    updateVarCount(varCount, varName);
+                }
+
+                foreach (var cDec in classDec)
+                {
+                    var methodDec = cDec.DescendantNodes().OfType<MethodDeclarationSyntax>();
+                    foreach (var mDec in methodDec)
+                    {
+                        var addedVars = new HashSet<string>();
+
+                        var varUsage = mDec.DescendantNodes().OfType<IdentifierNameSyntax>();
+                        foreach (var usage in varUsage)
+                        {
+                            string varName = usage.Identifier.Text;
+
+                            if (!varName.StartsWith("_") && char.IsLower(varName[0]) && (varName != "var"))
+                            {
+                                if (addedVars.Add(varName))
+                                {
+                                    updateVarCount(varCount, varName);
+                                }
+                            }
+                        }
+                    }
+                }
+
+                label2.Text = "Total Number of Modules : " + totalModules.ToString();
+                foreach (var a in varCount)
+                {
+                    float dataCommonality = ((float)a.Value / totalModules) * 100;
+                    dataGridView1.Rows.Add(a.Key, a.Value, $"{dataCommonality}%");
                 }
             }
         }
@@ -103,6 +122,7 @@ namespace DataCommonalityChecker
         private void btnReset_Click(object sender, EventArgs e)
         {
             dataGridView1.Rows.Clear();
+            label2.Text = string.Empty;
         }
     }
 }
