@@ -34,6 +34,7 @@
             this.btnReset = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.scfile = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Data = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TotalDataCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DataCommonality = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -47,12 +48,13 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.scfile,
             this.Data,
             this.TotalDataCount,
             this.DataCommonality});
             this.dataGridView1.Location = new System.Drawing.Point(13, 68);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(775, 370);
+            this.dataGridView1.Size = new System.Drawing.Size(858, 449);
             this.dataGridView1.TabIndex = 0;
             // 
             // btnBrowse
@@ -90,7 +92,7 @@
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(535, 13);
+            this.label1.Location = new System.Drawing.Point(618, 13);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(253, 31);
             this.label1.TabIndex = 4;
@@ -104,6 +106,12 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(0, 16);
             this.label2.TabIndex = 5;
+            // 
+            // scfile
+            // 
+            this.scfile.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.scfile.HeaderText = "Source Code File";
+            this.scfile.Name = "scfile";
             // 
             // Data
             // 
@@ -130,7 +138,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(883, 529);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnReset);
@@ -154,6 +162,7 @@
         private System.Windows.Forms.Button btnReset;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn scfile;
         private System.Windows.Forms.DataGridViewTextBoxColumn Data;
         private System.Windows.Forms.DataGridViewTextBoxColumn TotalDataCount;
         private System.Windows.Forms.DataGridViewTextBoxColumn DataCommonality;

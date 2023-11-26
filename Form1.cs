@@ -1,13 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
@@ -19,74 +14,68 @@ namespace DataCommonalityChecker
     public partial class Form1 : Form
     {
         private List<string> sourceCodeFile = new List<string>();
-        public string fileName;
+        private string[] csFiles;
 
-        public void updateVarCount(Dictionary<string, int> varCount, string varName)
+        private void updateVarCount(Dictionary<string, Dictionary<string, int>> varCountDict, string varName)
         {
-            if (!varCount.ContainsKey(varName))
+            if (!varCountDict.ContainsKey(varName))
             {
-                varCount[varName] = 1;
+                varCountDict[varName] = new Dictionary<string, int>();
             }
-            else
+
+            if (!varCountDict[varName].ContainsKey(""))
             {
-                varCount[varName]++;
+                varCountDict[varName][""] = 0;
             }
+
+            varCountDict[varName][""]++;
         }
 
-        public Form1()
-        {
-            InitializeComponent();
-        }
-
-        private void btnBrowse_Click(object sender, EventArgs e)
-        {
-            CommonOpenFileDialog dialog = new CommonOpenFileDialog();
-            dialog.Title = "Open Source Code Folder";
-            dialog.IsFolderPicker = true;
-
-            if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
-            {
-                sourceCodeFile.Clear();
-
-                string folderPath = dialog.FileName;
-                string[] csFiles = Directory.GetFiles(folderPath, "*.cs");
-
-                foreach (var file in csFiles)
-                {
-                    string fileName = Path.GetFileName(file);
-                    string fileContent = File.ReadAllText(file);
-                    sourceCodeFile.Add(fileContent);
-                }
-            }
-        }
-
-        private void btnCheck_Click(object sender, EventArgs e)
+        private void dataCommonalityFolder(IEnumerable<string> csFiles)
         {
             dataGridView1.Rows.Clear();
             label2.Text = string.Empty;
-            Dictionary<string, int> varCount = new Dictionary<string, int>();
             int totalModules = 0;
 
-            foreach (var sourceCode in sourceCodeFile)
+            if (csFiles == null)
             {
+                label2.Text = "No folder selected!";
+                return;
+            }
+
+            foreach (var fp in csFiles)
+            {
+                string sourceCode = File.ReadAllText(fp);
+
                 SyntaxTree syntaxTree = CSharpSyntaxTree.ParseText(sourceCode);
                 var root = syntaxTree.GetRoot();
 
-                totalModules += root.DescendantNodes().OfType<ClassDeclarationSyntax>().Count() +
-                                root.DescendantNodes().OfType<MethodDeclarationSyntax>().Count();
-
-                dataGridView1.Rows.Clear();
-                label2.Text = string.Empty;
-                var fieldDec = root.DescendantNodes().OfType<FieldDeclarationSyntax>();
-                var propertyDec = root.DescendantNodes().OfType<PropertyDeclarationSyntax>();
                 var classDec = root.DescendantNodes().OfType<ClassDeclarationSyntax>();
+                var methodDec = root.DescendantNodes().OfType<MethodDeclarationSyntax>()
+                                    .Where(m => m.Modifiers.Any(SyntaxKind.PrivateKeyword));
 
-                if (sourceCode == null)
+                totalModules += classDec.Count() + methodDec.Count();
+            }
+
+            foreach (var filePath in csFiles)
+            {
+                string fileName = Path.GetFileNameWithoutExtension(filePath);
+                string sourceCode = File.ReadAllText(filePath);
+
+                SyntaxTree syntaxTree = CSharpSyntaxTree.ParseText(sourceCode);
+                var root = syntaxTree.GetRoot();
+
+                var classDec = root.DescendantNodes().OfType<ClassDeclarationSyntax>();
+                var methodDec = root.DescendantNodes().OfType<MethodDeclarationSyntax>()
+                                    .Where(m => m.Modifiers.Any(SyntaxKind.PrivateKeyword));
+
+                Dictionary<string, Dictionary<string, int>> varCount = new Dictionary<string, Dictionary<string, int>>();
+
+                foreach (var cDec in classDec)
                 {
-                    label2.Text = "No File Supplied!";
-                }
-                else
-                {
+                    var fieldDec = cDec.DescendantNodes().OfType<FieldDeclarationSyntax>();
+                    var propertyDec = cDec.DescendantNodes().OfType<PropertyDeclarationSyntax>();
+
                     foreach (var fDec in fieldDec)
                     {
                         var varDec = fDec.DescendantNodes().OfType<VariableDeclaratorSyntax>();
@@ -106,39 +95,83 @@ namespace DataCommonalityChecker
                         string varName = pDec.Identifier.Text;
                         updateVarCount(varCount, varName);
                     }
+                }
 
-                    foreach (var cDec in classDec)
+                foreach (var mDec in methodDec)
+                {
+                    var varDec = mDec.DescendantNodes().OfType<VariableDeclarationSyntax>();
+                    var addedVars = new HashSet<string>();
+                    foreach (var vDec in varDec)
                     {
-                        var methodDec = cDec.DescendantNodes().OfType<MethodDeclarationSyntax>();
-                        foreach (var mDec in methodDec)
+                        string varName = vDec.Variables.FirstOrDefault()?.Identifier.Text;
+                        string typeName = vDec.Type.ToString();
+
+                        if (!string.IsNullOrEmpty(varName) && !varName.StartsWith("_") && char.IsLower(varName[0]) && (varName != "var"))
                         {
-                            var addedVars = new HashSet<string>();
-
-                            var varUsage = mDec.DescendantNodes().OfType<IdentifierNameSyntax>();
-                            foreach (var usage in varUsage)
+                            if (addedVars.Add(varName))
                             {
-                                string varName = usage.Identifier.Text;
-
-                                if (!varName.StartsWith("_") && char.IsLower(varName[0]) && (varName != "var"))
-                                {
-                                    if (addedVars.Add(varName))
-                                    {
-                                        updateVarCount(varCount, varName);
-                                    }
-                                }
+                                updateVarCount(varCount, varName);
                             }
                         }
                     }
 
-                    label2.Text = "Total Number of Modules : " + totalModules.ToString();
-                    foreach (var a in varCount)
+                    var varUsages = mDec.DescendantNodes().OfType<IdentifierNameSyntax>();
+                    foreach (var usages in varUsages)
                     {
-                        float dataCommonality = ((float)a.Value / totalModules) * 100;
-                        dataGridView1.Rows.Add(a.Key, a.Value, $"{dataCommonality}%");
+                        string varName = usages.Identifier.Text;
+
+                        if (!string.IsNullOrEmpty(varName) && !varName.StartsWith("_") && char.IsLower(varName[0]) && (varName != "var"))
+                        {
+                            if (addedVars.Add(varName))
+                            {
+                                updateVarCount(varCount, varName);
+                            }
+                        }
+                        
                     }
                 }
 
+                label2.Text = $"Total Number of Modules : {totalModules}";
+                foreach (var a in varCount)
+                {
+                    string varName = a.Key;
+                    foreach (var typePair in a.Value)
+                    {
+                        string typeName = typePair.Key;
+                        int count = typePair.Value;
+
+                        double dataCommonality = ((double)count / totalModules) * 100;
+                        dataGridView1.Rows.Add(fileName, varName, count, $"{dataCommonality}%");
+                    }
+                }
+                dataGridView1.Sort(dataGridView1.Columns[2], System.ComponentModel.ListSortDirection.Descending);
             }
+        }
+
+
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void btnBrowse_Click(object sender, EventArgs e)
+        {
+            CommonOpenFileDialog dialog = new CommonOpenFileDialog();
+            dialog.Title = "Open Source Code Folder";
+            dialog.IsFolderPicker = true;
+
+            if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
+            {
+                sourceCodeFile.Clear();
+
+                string folderPath = dialog.FileName;
+                csFiles = Directory.GetFiles(folderPath, "*.cs");
+            }
+        }
+
+        private void btnCheck_Click(object sender, EventArgs e)
+        {
+            dataCommonalityFolder(csFiles);
         }
 
         private void btnReset_Click(object sender, EventArgs e)
