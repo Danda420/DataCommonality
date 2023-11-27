@@ -29,15 +29,17 @@
         private void InitializeComponent()
         {
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.scfile = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Data = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TotalDataCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DataCommonality = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnBrowse = new System.Windows.Forms.Button();
             this.btnCheck = new System.Windows.Forms.Button();
             this.btnReset = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.scfile = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Data = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TotalDataCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DataCommonality = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.checkBoxMultipleSC = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -56,6 +58,33 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(858, 449);
             this.dataGridView1.TabIndex = 0;
+            // 
+            // scfile
+            // 
+            this.scfile.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.scfile.HeaderText = "Source Code File";
+            this.scfile.Name = "scfile";
+            // 
+            // Data
+            // 
+            this.Data.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Data.HeaderText = "Data";
+            this.Data.Name = "Data";
+            this.Data.ReadOnly = true;
+            // 
+            // TotalDataCount
+            // 
+            this.TotalDataCount.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.TotalDataCount.HeaderText = "Number of Modules using this data element";
+            this.TotalDataCount.Name = "TotalDataCount";
+            this.TotalDataCount.ReadOnly = true;
+            // 
+            // DataCommonality
+            // 
+            this.DataCommonality.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.DataCommonality.HeaderText = "Data Commonality";
+            this.DataCommonality.Name = "DataCommonality";
+            this.DataCommonality.ReadOnly = true;
             // 
             // btnBrowse
             // 
@@ -107,38 +136,35 @@
             this.label2.Size = new System.Drawing.Size(0, 16);
             this.label2.TabIndex = 5;
             // 
-            // scfile
+            // checkBox1
             // 
-            this.scfile.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.scfile.HeaderText = "Source Code File";
-            this.scfile.Name = "scfile";
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(338, 43);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(176, 17);
+            this.checkBox1.TabIndex = 6;
+            this.checkBox1.Text = "Also count variable declarations";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
-            // Data
+            // checkBoxMultipleSC
             // 
-            this.Data.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Data.HeaderText = "Data";
-            this.Data.Name = "Data";
-            this.Data.ReadOnly = true;
-            // 
-            // TotalDataCount
-            // 
-            this.TotalDataCount.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.TotalDataCount.HeaderText = "Number of Modules using this data element";
-            this.TotalDataCount.Name = "TotalDataCount";
-            this.TotalDataCount.ReadOnly = true;
-            // 
-            // DataCommonality
-            // 
-            this.DataCommonality.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.DataCommonality.HeaderText = "Data Commonality";
-            this.DataCommonality.Name = "DataCommonality";
-            this.DataCommonality.ReadOnly = true;
+            this.checkBoxMultipleSC.AutoSize = true;
+            this.checkBoxMultipleSC.Location = new System.Drawing.Point(338, 12);
+            this.checkBoxMultipleSC.Name = "checkBoxMultipleSC";
+            this.checkBoxMultipleSC.Size = new System.Drawing.Size(140, 17);
+            this.checkBoxMultipleSC.TabIndex = 7;
+            this.checkBoxMultipleSC.Text = "Multiple source code file";
+            this.checkBoxMultipleSC.UseVisualStyleBackColor = true;
+            this.checkBoxMultipleSC.CheckedChanged += new System.EventHandler(this.checkBoxMultipleSC_CheckedChanged);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(883, 529);
+            this.Controls.Add(this.checkBoxMultipleSC);
+            this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnReset);
@@ -166,6 +192,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Data;
         private System.Windows.Forms.DataGridViewTextBoxColumn TotalDataCount;
         private System.Windows.Forms.DataGridViewTextBoxColumn DataCommonality;
+        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox checkBoxMultipleSC;
     }
 }
 
