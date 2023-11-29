@@ -14,7 +14,6 @@ namespace DataCommonalityChecker
 {
     public partial class Form1 : Form
     {
-        private List<string> sourceCodeFile = new List<string>();
         private string[] csFiles;
         private string sourceCodeSingle;
 
@@ -121,7 +120,6 @@ namespace DataCommonalityChecker
 
             if (sourceCodeFile == null)
             {
-                label2.Text = "No C# Source Code File selected!";
                 return;
             }
 
@@ -294,7 +292,7 @@ namespace DataCommonalityChecker
             // VAR USAGES & DECS END
 
             // Count Data Commonality and output it into dataGridView
-            label2.Text = $"Total Number of Modules : {totalModules}";
+            label2.Text = $"{totalModules}";
             foreach (var a in varCount)
             {
                 foreach (var count in a.Value.Values)
@@ -315,7 +313,6 @@ namespace DataCommonalityChecker
 
             if (csFiles == null)
             {
-                label2.Text = "No folder selected!";
                 return;
             }
 
@@ -491,7 +488,7 @@ namespace DataCommonalityChecker
             }
 
             // Count Data Commonality and output it into dataGridView
-            label2.Text = $"Total Number of Modules : {totalModules}";
+            label2.Text = $"{totalModules}";
             mergeVarCount(varCount);
             var dupe = new HashSet<string>();
             foreach (var varName in varCount.Keys)
@@ -527,10 +524,10 @@ namespace DataCommonalityChecker
 
                 if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
                 {
-                    sourceCodeFile.Clear();
-
                     string folderPath = dialog.FileName;
+                    btnCheck.Enabled = true;
                     csFiles = Directory.GetFiles(folderPath, "*.cs");
+
                 }
             }
             else
@@ -542,6 +539,7 @@ namespace DataCommonalityChecker
                 if (dialog.ShowDialog() == DialogResult.OK)
                 {
                     sourceCodeSingle = dialog.FileName;
+                    btnCheck.Enabled = true;
                 }
             }
         }
@@ -561,17 +559,29 @@ namespace DataCommonalityChecker
         private void btnReset_Click(object sender, EventArgs e)
         {
             dataGridView1.Rows.Clear();
-            label2.Text = string.Empty;
-        }
-
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
-        {
-            countVarsDeclarationsAlso = checkBox1.Checked;
+            label2.Text = "null";
+            csFiles = null;
+            sourceCodeSingle = null;
+            btnCheck.Enabled = false;
         }
 
         private void checkBoxMultipleSC_CheckedChanged(object sender, EventArgs e)
         {
             dataCommonalityMultiple = checkBoxMultipleSC.Checked;
+
+            if (dataCommonalityMultiple == true)
+            {
+                btnBrowse.Text = "Open Folder";
+            }
+            else
+            {
+                btnBrowse.Text = "Select File";
+            }
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            countVarsDeclarationsAlso = checkBox1.Checked;
         }
     }
 }

@@ -40,7 +40,10 @@
             this.label2 = new System.Windows.Forms.Label();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.checkBoxMultipleSC = new System.Windows.Forms.CheckBox();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -54,9 +57,9 @@
             this.Data,
             this.TotalDataCount,
             this.DataCommonality});
-            this.dataGridView1.Location = new System.Drawing.Point(13, 68);
+            this.dataGridView1.Location = new System.Drawing.Point(13, 121);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(858, 449);
+            this.dataGridView1.Size = new System.Drawing.Size(858, 396);
             this.dataGridView1.TabIndex = 0;
             // 
             // scfile
@@ -90,15 +93,16 @@
             // 
             this.btnBrowse.Location = new System.Drawing.Point(12, 12);
             this.btnBrowse.Name = "btnBrowse";
-            this.btnBrowse.Size = new System.Drawing.Size(75, 23);
+            this.btnBrowse.Size = new System.Drawing.Size(95, 23);
             this.btnBrowse.TabIndex = 1;
-            this.btnBrowse.Text = "Browse";
+            this.btnBrowse.Text = "Select File";
             this.btnBrowse.UseVisualStyleBackColor = true;
             this.btnBrowse.Click += new System.EventHandler(this.btnBrowse_Click);
             // 
             // btnCheck
             // 
-            this.btnCheck.Location = new System.Drawing.Point(93, 13);
+            this.btnCheck.Enabled = false;
+            this.btnCheck.Location = new System.Drawing.Point(113, 13);
             this.btnCheck.Name = "btnCheck";
             this.btnCheck.Size = new System.Drawing.Size(151, 23);
             this.btnCheck.TabIndex = 2;
@@ -108,7 +112,7 @@
             // 
             // btnReset
             // 
-            this.btnReset.Location = new System.Drawing.Point(250, 12);
+            this.btnReset.Location = new System.Drawing.Point(270, 12);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(75, 23);
             this.btnReset.TabIndex = 3;
@@ -130,16 +134,19 @@
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(12, 42);
+            this.label2.Location = new System.Drawing.Point(199, 3);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(0, 16);
+            this.label2.Size = new System.Drawing.Size(37, 21);
             this.label2.TabIndex = 5;
+            this.label2.Text = "null";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(338, 43);
+            this.checkBox1.Location = new System.Drawing.Point(12, 64);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(176, 17);
             this.checkBox1.TabIndex = 6;
@@ -150,7 +157,7 @@
             // checkBoxMultipleSC
             // 
             this.checkBoxMultipleSC.AutoSize = true;
-            this.checkBoxMultipleSC.Location = new System.Drawing.Point(338, 12);
+            this.checkBoxMultipleSC.Location = new System.Drawing.Point(13, 41);
             this.checkBoxMultipleSC.Name = "checkBoxMultipleSC";
             this.checkBoxMultipleSC.Size = new System.Drawing.Size(140, 17);
             this.checkBoxMultipleSC.TabIndex = 7;
@@ -158,14 +165,41 @@
             this.checkBoxMultipleSC.UseVisualStyleBackColor = true;
             this.checkBoxMultipleSC.CheckedChanged += new System.EventHandler(this.checkBoxMultipleSC_CheckedChanged);
             // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.OutsetDouble;
+            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 81.90076F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 18.09925F));
+            this.tableLayoutPanel1.Controls.Add(this.label2, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.label3, 0, 0);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(13, 88);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(242, 27);
+            this.tableLayoutPanel1.TabIndex = 8;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
+            this.label3.Location = new System.Drawing.Point(6, 3);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(184, 21);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "Total Number of Modules";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(883, 529);
+            this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.checkBoxMultipleSC);
             this.Controls.Add(this.checkBox1);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnReset);
             this.Controls.Add(this.btnCheck);
@@ -175,6 +209,8 @@
             this.Name = "Form1";
             this.Text = "Data Commonality Checker";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -194,6 +230,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn DataCommonality;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.CheckBox checkBoxMultipleSC;
+        private System.Windows.Forms.Label label3;
+        public System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
     }
 }
 
