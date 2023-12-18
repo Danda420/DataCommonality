@@ -240,7 +240,7 @@ namespace DataCommonality
             this.label4.TabIndex = 11;
             this.label4.Text = "Data Commonality : null";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label4.Click += new System.EventHandler(this.label4_Click);
+            // this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // tableLayoutPanel2
             // 
@@ -329,7 +329,7 @@ namespace DataCommonality
             this.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.Name = "Form1";
             this.Text = "Data Commonality";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            // this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
