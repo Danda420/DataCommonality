@@ -163,7 +163,7 @@ namespace DataCommonality
 
             dataCommonality_ = ((double)hundredPercent / totalResults) * 100;
 
-            label4.Text = $"Data Commonality : {dataCommonality_}%";
+            label4.Text = $"{dataCommonality_}%";
         }
 
         public Form1()

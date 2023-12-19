@@ -70,11 +70,11 @@ namespace DataCommonality
             this.dataType,
             this.TotalDataCount,
             this.DataCommonality});
-            this.dataGridView1.Location = new System.Drawing.Point(3, 5);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.dataGridView1.Location = new System.Drawing.Point(2, 3);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 62;
-            this.dataGridView1.Size = new System.Drawing.Size(1049, 526);
+            this.dataGridView1.Size = new System.Drawing.Size(699, 342);
             this.dataGridView1.TabIndex = 0;
             // 
             // scfile
@@ -117,10 +117,10 @@ namespace DataCommonality
             // 
             // btnBrowse
             // 
-            this.btnBrowse.Location = new System.Drawing.Point(12, 123);
-            this.btnBrowse.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.btnBrowse.Location = new System.Drawing.Point(8, 80);
+            this.btnBrowse.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnBrowse.Name = "btnBrowse";
-            this.btnBrowse.Size = new System.Drawing.Size(142, 35);
+            this.btnBrowse.Size = new System.Drawing.Size(95, 23);
             this.btnBrowse.TabIndex = 1;
             this.btnBrowse.Text = "Open Folder";
             this.btnBrowse.UseVisualStyleBackColor = true;
@@ -129,10 +129,10 @@ namespace DataCommonality
             // btnCheck
             // 
             this.btnCheck.Enabled = false;
-            this.btnCheck.Location = new System.Drawing.Point(11, 168);
-            this.btnCheck.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.btnCheck.Location = new System.Drawing.Point(7, 109);
+            this.btnCheck.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnCheck.Name = "btnCheck";
-            this.btnCheck.Size = new System.Drawing.Size(142, 35);
+            this.btnCheck.Size = new System.Drawing.Size(95, 23);
             this.btnCheck.TabIndex = 2;
             this.btnCheck.Text = "Start Testing";
             this.btnCheck.UseVisualStyleBackColor = true;
@@ -141,10 +141,10 @@ namespace DataCommonality
             // btnReset
             // 
             this.btnReset.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnReset.Location = new System.Drawing.Point(13, 537);
-            this.btnReset.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.btnReset.Location = new System.Drawing.Point(9, 349);
+            this.btnReset.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(142, 35);
+            this.btnReset.Size = new System.Drawing.Size(95, 23);
             this.btnReset.TabIndex = 3;
             this.btnReset.Text = "Reset";
             this.btnReset.UseVisualStyleBackColor = true;
@@ -156,9 +156,10 @@ namespace DataCommonality
             this.label1.BackColor = System.Drawing.Color.Bisque;
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(3, 0);
+            this.label1.Location = new System.Drawing.Point(2, 0);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(1318, 58);
+            this.label1.Size = new System.Drawing.Size(879, 38);
             this.label1.TabIndex = 4;
             this.label1.Text = "Data Commonality";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -168,9 +169,10 @@ namespace DataCommonality
             this.label2.AutoSize = true;
             this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(300, 3);
+            this.label2.Location = new System.Drawing.Point(199, 3);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(59, 32);
+            this.label2.Size = new System.Drawing.Size(39, 19);
             this.label2.TabIndex = 5;
             this.label2.Text = "null";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -183,12 +185,12 @@ namespace DataCommonality
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 18.09925F));
             this.tableLayoutPanel1.Controls.Add(this.label2, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.label3, 0, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 5);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(2, 3);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(365, 38);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(243, 25);
             this.tableLayoutPanel1.TabIndex = 8;
             // 
             // label3
@@ -196,9 +198,10 @@ namespace DataCommonality
             this.label3.AutoSize = true;
             this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.label3.Location = new System.Drawing.Point(6, 3);
+            this.label3.Location = new System.Drawing.Point(5, 3);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(285, 32);
+            this.label3.Size = new System.Drawing.Size(187, 19);
             this.label3.TabIndex = 6;
             this.label3.Text = "Total File Found";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -206,10 +209,9 @@ namespace DataCommonality
             // helpBtn
             // 
             this.helpBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.helpBtn.Location = new System.Drawing.Point(13, 582);
-            this.helpBtn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.helpBtn.Location = new System.Drawing.Point(9, 378);
             this.helpBtn.Name = "helpBtn";
-            this.helpBtn.Size = new System.Drawing.Size(142, 35);
+            this.helpBtn.Size = new System.Drawing.Size(95, 23);
             this.helpBtn.TabIndex = 9;
             this.helpBtn.Text = "Help";
             this.helpBtn.UseVisualStyleBackColor = true;
@@ -219,10 +221,9 @@ namespace DataCommonality
             // 
             this.btnCSV.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnCSV.Enabled = false;
-            this.btnCSV.Location = new System.Drawing.Point(13, 492);
-            this.btnCSV.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnCSV.Location = new System.Drawing.Point(9, 320);
             this.btnCSV.Name = "btnCSV";
-            this.btnCSV.Size = new System.Drawing.Size(142, 35);
+            this.btnCSV.Size = new System.Drawing.Size(95, 23);
             this.btnCSV.TabIndex = 10;
             this.btnCSV.Text = "Export CSV";
             this.btnCSV.UseVisualStyleBackColor = true;
@@ -232,15 +233,13 @@ namespace DataCommonality
             // 
             this.label4.AutoSize = true;
             this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(528, 0);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(352, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(517, 43);
+            this.label4.Size = new System.Drawing.Size(344, 28);
             this.label4.TabIndex = 11;
-            this.label4.Text = "Data Commonality : null";
+            this.label4.Text = "null";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // tableLayoutPanel2
             // 
@@ -249,10 +248,11 @@ namespace DataCommonality
             this.tableLayoutPanel2.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1324, 58);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(883, 38);
             this.tableLayoutPanel2.TabIndex = 12;
             // 
             // tableLayoutPanel3
@@ -264,23 +264,25 @@ namespace DataCommonality
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel3.Controls.Add(this.label4, 1, 0);
             this.tableLayoutPanel3.Controls.Add(this.label5, 0, 0);
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 539);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(2, 350);
+            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(1049, 43);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(699, 28);
             this.tableLayoutPanel3.TabIndex = 13;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(3, 0);
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(2, 0);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(518, 43);
+            this.label5.Size = new System.Drawing.Size(345, 28);
             this.label5.TabIndex = 12;
-            this.label5.Text = "Data Commonality Presentage";
+            this.label5.Text = "Data Commonality Precentage";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // tableLayoutPanel4
@@ -292,12 +294,13 @@ namespace DataCommonality
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel4.Controls.Add(this.dataGridView1, 0, 0);
             this.tableLayoutPanel4.Controls.Add(this.tableLayoutPanel3, 0, 1);
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(213, 118);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(142, 77);
+            this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 2;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 49F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(1055, 585);
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(703, 380);
             this.tableLayoutPanel4.TabIndex = 14;
             // 
             // tableLayoutPanel5
@@ -305,18 +308,19 @@ namespace DataCommonality
             this.tableLayoutPanel5.ColumnCount = 1;
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel5.Controls.Add(this.tableLayoutPanel1, 0, 0);
-            this.tableLayoutPanel5.Location = new System.Drawing.Point(216, 67);
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(144, 44);
+            this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 1;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(371, 48);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(247, 31);
             this.tableLayoutPanel5.TabIndex = 15;
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1324, 742);
+            this.ClientSize = new System.Drawing.Size(883, 482);
             this.Controls.Add(this.tableLayoutPanel5);
             this.Controls.Add(this.tableLayoutPanel4);
             this.Controls.Add(this.tableLayoutPanel2);
@@ -326,10 +330,9 @@ namespace DataCommonality
             this.Controls.Add(this.btnCheck);
             this.Controls.Add(this.btnBrowse);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.Name = "Form1";
             this.Text = "Data Commonality";
-            // this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
