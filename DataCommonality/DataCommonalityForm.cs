@@ -209,9 +209,9 @@ namespace DataCommonality
         {
             MessageBox.Show("1. Press 'Open Folder' button to select a folder that has your application source code files \n" +
                 "\n" +
-                "2. Press 'Check Data Commonality' button to check the use of standard data types and structure inside of your app \n" +
+                "2. Press 'Start Testing' button to check the use of standard data types and structure inside of your app \n" +
                 "\n" +
-                "3. After pressing 'Check Data Commonality' button, result will be displayed \n" +
+                "3. After pressing 'Start Testing' button, the result will be displayed \n" +
                 "\n" +
                 "4. you can export the output into a csv file with 'Export CSV' button\n" +
                 "\n" +
