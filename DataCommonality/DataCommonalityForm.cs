@@ -225,29 +225,35 @@ namespace DataCommonality
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             saveFileDialog.Filter = "CSV Files (*.csv)|*.csv";
             saveFileDialog.Title = "Save CSV File";
-
+            
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
                 StringBuilder sb = new StringBuilder();
-
+            
+                // Header
                 for (int i = 0; i < dataGridView1.Columns.Count; i++)
                 {
-                    sb.Append(dataGridView1.Columns[i].HeaderText);
+                    sb.Append($"\"{dataGridView1.Columns[i].HeaderText}\"");
                     sb.Append(i == dataGridView1.Columns.Count - 1 ? "\n" : ",");
                 }
-
+            
+                // Rows
                 foreach (DataGridViewRow row in dataGridView1.Rows)
                 {
                     for (int i = 0; i < dataGridView1.Columns.Count; i++)
                     {
-                        sb.Append(row.Cells[i].Value);
+                        object cellValue = row.Cells[i].Value;
+                        string cellText = (cellValue == null) ? string.Empty : cellValue.ToString();
+            
+                        sb.Append($"\"{cellText}\"");
                         sb.Append(i == dataGridView1.Columns.Count - 1 ? "\n" : ",");
                     }
                 }
-
+            
+                // Additional Information
                 sb.AppendLine($"Total Number of Modules : {totalModules}");
                 sb.AppendLine($"Data Commonality : {dataCommonality_}%");
-
+            
                 File.WriteAllText(saveFileDialog.FileName, sb.ToString(), Encoding.UTF8);
             }
         }
