@@ -198,11 +198,12 @@ namespace DataCommonality
         private void btnReset_Click(object sender, EventArgs e)
         {
             dataGridView1.Rows.Clear();
-            label2.Text = "null";
+            label2.Text = "0";
             csFiles = null;
             btnCheck.Enabled = false;
             btnCSV.Enabled = false;
             totalModules = 0;
+            label4.Text = "0";
         }
 
         private void helpBtn_Click(object sender, EventArgs e)
@@ -231,7 +232,7 @@ namespace DataCommonality
                 StringBuilder sb = new StringBuilder();
         
             // Header
-            sb.AppendLine("DATA COMMONALITY TESTING\n");
+            sb.AppendLine("DATA COMMONALITY TESTING\n\n");
             sb.AppendLine("Source Code File,Data,Data Type,Number of Modules using this data element,Data Commonality");
 
                 // Rows
