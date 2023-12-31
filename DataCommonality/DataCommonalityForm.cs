@@ -259,5 +259,15 @@ namespace DataCommonality
                 MessageBox.Show(message, "Success");
            }
         }
+
+        private void infoBtn_Click(object sender, EventArgs e)
+             {
+                 string message = "1. WHAT IS DATA COMMONALITY\n" +
+                     "data commonality is the.....\n" +
+                     "\n\n2. HOW TO MEASURE DATA COMMONALITY?\n" +
+                     "please write here.....";
+                 string title = "Information of Data Commonality";
+                 MessageBox.Show(message, title);
+             }
     }
 }
