@@ -14,6 +14,7 @@ namespace DataCommonality
     public partial class Form1 : Form
     {
         private string[] csFiles;
+        string timeOfTesting;
         double dataCommonality_;
         int totalModules = 0;
 
@@ -99,7 +100,7 @@ namespace DataCommonality
 
             foreach (var filePath in csFiles)
             {
-                string fileName = Path.GetFileNameWithoutExtension(filePath);
+                string fileName = Path.GetFileName(filePath);
                 string sourceCode = File.ReadAllText(filePath);
 
                 SyntaxTree syntaxTree = CSharpSyntaxTree.ParseText(sourceCode);
@@ -193,6 +194,10 @@ namespace DataCommonality
             totalModules = 0;
             dataCommonality(csFiles);
             btnCSV.Enabled = true;
+
+            DateTime currentDate = DateTime.Now;
+            string timeNOW = currentDate.ToString("yyyy MMMM dd - HH:mm:ss");
+            timeOfTesting = timeNOW;
         }
 
         private void btnReset_Click(object sender, EventArgs e)
@@ -208,17 +213,21 @@ namespace DataCommonality
 
         private void helpBtn_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("1. Press 'Open Folder' button to select a folder that has your application source code files \n" +
-                "\n" +
-                "2. Press 'Start Testing' button to check the use of standard data types and structure inside of your app \n" +
-                "\n" +
-                "3. After pressing 'Start Testing' button, the result will be displayed \n" +
-                "\n" +
-                "4. you can export the output into a csv file with 'Export CSV' button\n" +
-                "\n" +
-                "\n" +
-                "This app only accepts C# and Java source codes as input \n" +
-                "It might not display results correctly tho if you use java as input...");
+            StringBuilder helpmsgBuilder = new StringBuilder();
+
+            helpmsgBuilder.AppendLine("1. Press 'Open Folder' button to select a folder that has your application source code files");
+            helpmsgBuilder.AppendLine("");
+            helpmsgBuilder.AppendLine("2. Press 'Start Testing' button to check the use of standard data types and structure inside of your app");
+            helpmsgBuilder.AppendLine("");
+            helpmsgBuilder.AppendLine("3. After pressing 'Start Testing' button, the result will be displayed");
+            helpmsgBuilder.AppendLine("");
+            helpmsgBuilder.AppendLine("4. you can export the output into a csv file with 'Export CSV' button");
+            helpmsgBuilder.AppendLine("");
+            helpmsgBuilder.AppendLine("This app only accepts C# and Java source codes as input");
+            helpmsgBuilder.AppendLine("It might not display results correctly tho if you use java as input...");
+
+            string helpMessage = helpmsgBuilder.ToString();
+            MessageBox.Show(helpMessage, "User Guide", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void btnCSV_Click(object sender, EventArgs e)
@@ -233,6 +242,8 @@ namespace DataCommonality
         
             // Header
             sb.AppendLine("DATA COMMONALITY TESTING\n\n");
+            sb.AppendLine($"TIME OF TESTING : {timeOfTesting}");
+            sb.AppendLine("");
             sb.AppendLine("Source Code File,Data,Data Type,Number of Modules using this data element,Data Commonality");
 
                 // Rows
@@ -255,9 +266,8 @@ namespace DataCommonality
                 sb.AppendLine($"Data Commonality : {dataCommonality_}%");
         
                 File.WriteAllText(saveFileDialog.FileName, sb.ToString(), Encoding.UTF8);
-        
-                string message = "Success save the CSV file";
-                MessageBox.Show(message, "Success");
+
+                MessageBox.Show("Success! saved into a CSV file.", "Success");
            }
         }
 
