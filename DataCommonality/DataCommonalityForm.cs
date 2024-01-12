@@ -274,9 +274,14 @@ namespace DataCommonality
         private void infoBtn_Click(object sender, EventArgs e)
              {
                  string message = "1. WHAT IS DATA COMMONALITY\n" +
-                     "data commonality is the.....\n" +
+                     "Data commonality is a measure of the degree to which data types and structures are used consistently throughout the program (Roger S. Pressman, Software Engineering: A Practitioner's Approach, 8th edition, page 510). High data commonality indicates that the program uses the same data types and structures consistently. This can facilitate interoperability with other systems, because other systems do not have to adapt to different data types and structures.\n" +
                      "\n\n2. HOW TO MEASURE DATA COMMONALITY?\n" +
-                     "please write here.....";
+                     "To measure the total data commonality of a program, it is necessary to first find the data commonality of a single data variable. To measure the data commonality of a single data variable, the following steps are performed: " +
+                     "\n 1. Find all data variables in all files of the program that have the same data variable name.\n" +
+                     "\n 2. The data commonality of a data variable is 100% if the data variable has the same data type or structure in each file. However, if the data variable has a different data type in one file, the data commonality is 0%.\n" +
+                     "\n 3. Count the number of data variables that have a data commonality of 100%. \n" +
+                     "To measure the total data commonality of a program: \n" +
+                     "\n Total data commonality = (Number of data variables with a data commonality of 100%) / (Number of data variables with the same name) * 100%";
                  string title = "Information of Data Commonality";
                  MessageBox.Show(message, title);
              }
